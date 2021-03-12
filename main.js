@@ -3,48 +3,43 @@ $(function () {
   //Aggiungiamo eventi alle due frecce
   $(".next").click(
     function () {
-      var immagine = $(".images img.active");
-      if ( immagine.hasClass("last") == true) {
-        $(".images img.first").addClass("active");
-      }
-      immagine.removeClass("active");
-      immagine.next().addClass("active");
+      next();
     }
   );
 
   $(".prev").click(
     function () {
-      var immagine = $(".images img.active");
-      if ( immagine.hasClass("first") == true) {
-        $(".images img.last").addClass("active");
-      }
-      immagine.removeClass("active");
-      immagine.prev().addClass("active");
+      prev();
     }
   );
 
+  //Keyboard event
   $(document).keydown(function(e){
     if (e.which == 37) {
-      var immagine = $(".images img.active");
-      if ( immagine.hasClass("first") == true) {
-        $(".images img.last").addClass("active");
-      }
-      immagine.removeClass("active");
-      immagine.prev().addClass("active");
+      prev();
     }
     if (e.which == 39) {
-      var immagine = $(".images img.active");
-      if ( immagine.hasClass("last") == true) {
-        $(".images img.first").addClass("active");
-      }
-      immagine.removeClass("active");
-      immagine.next().addClass("active");
+      next();
     }
 
+  });
 
+  function next() {
+    var immagine = $(".images img.active");
+    if ( immagine.hasClass("last") == true) {
+      $(".images img.first").addClass("active");
+    }
+    immagine.removeClass("active");
+    immagine.next().addClass("active");
+  };
 
-});
-
-
+  function prev() {
+    var immagine = $(".images img.active");
+    if ( immagine.hasClass("first") == true) {
+      $(".images img.last").addClass("active");
+    }
+    immagine.removeClass("active");
+    immagine.prev().addClass("active");
+  };
 
 });
