@@ -15,10 +15,16 @@ $(function () {
     }
   );
 
-  //Pallini
-  $(".nav > i").click(function () {
-    $(".nav > i").removeClass("active");
-    $(this).addClass("active");
+  //Aggiungiamo eventi ai bullet
+  $(".nav > i").click(
+    function () {
+      var pallinoNav = $(".nav > i");
+      var immagineSlider = $(".images img");
+      var indexPallino = pallinoNav.index(this);
+      $(pallinoNav).removeClass("active");
+      $(this).addClass("active");
+      immagineSlider.removeClass("active");
+      immagineSlider.eq(indexPallino).addClass("active");
   });
 
   function nextBullet() {
@@ -39,7 +45,7 @@ $(function () {
     pallino.prev().addClass("active");
   }
 
-  //Keyboard event
+  //Eventi tastiera
   $(document).keydown(function(e){
     if (e.which == 37) {
       prev();
